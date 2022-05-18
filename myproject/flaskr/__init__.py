@@ -13,7 +13,7 @@ def create_app(test_config=None):
     #app.config.from_mapping() sets default configuraation that the app will you
     app.config.from_mapping(
         # SECRECT_KEY used by Flask and extensions to keep data safe.set to dev when in development but should be replaced with random  val when deploying 
-        SECRECT_KEY='dev',
+        SECRET_KEY='dev',
         #DATABASE path to where the SQLlite database file is saved, under the app.instance_path (the path chosen by flask)
         DATABASE=os.path.join(app.instance_path,'flaskr.sqlite'),
 
@@ -44,5 +44,9 @@ def create_app(test_config=None):
 
     from . import auth
     app.register_blueprint(auth.bp)
+
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/',endpoint='index')
 
     return app

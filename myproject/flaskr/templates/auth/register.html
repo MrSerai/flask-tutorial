@@ -1,18 +1,18 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block header %}
-<h1>{%block title %} Register{%endblock%}</h1>
-{%endblock%}
+{% block header %}
+<h1>{% block title %} Register {% endblock %}</h1>
+{% endblock %}
 
 
 {% block content %}
-<form method="post">
+<form method="POST">
 
     <label for="username">Username</label>
     <input name="username" id="username" required>
 
-    <lable for="password">password</lable>
-    <input type="password" name="username" id="password" required>
+    <lable for="password">Password</lable>
+    <input type="password" name="password" id="password" required>
     <input type="submit" value="Register">
 </form>
 

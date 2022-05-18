@@ -1,4 +1,4 @@
-#!/home/allucious/Desktop/myproject/venv/bin/python3
+#!/home/allucious/Desktop/flask-tutorial/myproject/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

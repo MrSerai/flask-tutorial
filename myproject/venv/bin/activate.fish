@@ -30,7 +30,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/allucious/Desktop/myproject/venv"
+set -gx VIRTUAL_ENV "/home/allucious/Desktop/flask-tutorial/myproject/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
