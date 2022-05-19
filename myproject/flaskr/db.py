@@ -40,7 +40,7 @@ def init_db():
         db.executescript(f.read().decode('utf8'))
 
 #click.command() defines a command line command called init_db that calls the init_db function and shows a success message to the user
-@click.command('init-db')
+@click.command('init_db')
 @with_appcontext
 def init_db_command():
     """Clear the existing data and create new tables."""
