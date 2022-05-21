@@ -14,16 +14,16 @@ def get_db():
 
     if 'db' not in g:
             #sqlite3.connect() establish a connection to the file poinnted to at the DATABASE configuration key(doesnt exist yet until initialize the db)
-        g.db=sqlite3.connect(
+        g.db = sqlite3.connect(
             #current_app (special object)Points to the Flask app handling the request
             current_app.config['DATABASE'],
             detect_types=sqlite3.PARSE_DECLTYPES
         )
                     #sqlite3.Row tells the connection to return rows that behave like dicts, this allows accessing the column by name
-        g.db.row_factory=sqlite3.Row
+        g.db.row_factory = sqlite3.Row
     return g.db
-def close_db(e=None):
-    db=g.pop('db',None)
+def close_db(e = None):
+    db = g.pop('db',None)
 
     if db is not None:
 
@@ -32,7 +32,7 @@ def close_db(e=None):
 
 """Add the Python functions that will run these SQL commands to the db.py"""
 def init_db():
-    db=get_db()
+    db = get_db()
     #open_resource() opens a file relative to the flaskr package. it is necessary because you won't know where that location is when deploying the application 
     # (get_db returns a database connection, which is used to execute the commands reader from the file) 
     with current_app.open_resource('schema.sql') as f:
