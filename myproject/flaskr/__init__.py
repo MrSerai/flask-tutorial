@@ -2,7 +2,7 @@ import os
 from flask import Flask
 
 
-def (test_config=None):
+def create_app(test_config=None):
     #creat and configure the app
         #create an instance of Flask
         #__name__ (name of the current py module, its also the path to it)
