@@ -1,14 +1,22 @@
 import pytest
 from flaskr.db import get_db
 
-
+#All the blog views use the auth fixture you wrote earlier. 
+# Call auth.login() and subsequent requests from the client will be logged in as the test user.
 def test_index(client, auth):
+   
+    #You can also test some more authentication behavior while testing the index view.
     response = client.get('/')
+    
+    #When not logged in, each page shows links to log in or register. 
     assert b"Log In" in response.data
     assert b"Register" in response.data
-
+    
+    # Call auth.login() and subsequent requests from the client will be logged in as the test user.
     auth.login()
     response = client.get('/')
+   
+    #When logged in, there’s a link to log out.
     assert b'Log Out' in response.data
     assert b'test title' in response.data
     assert b'by test on 2018-01-01' in response.data

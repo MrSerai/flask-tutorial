@@ -8,9 +8,10 @@ from flaskr.auth import login_required
 from flaskr.db import get_db
 
 bp=Blueprint('blog',__name__)
-
+#The index view should display information about the post that was added 
 @bp.route('/')
 def index():
+    #The index view should display information about the post that was added 
     db = get_db()
     posts = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
@@ -22,6 +23,10 @@ def index():
 @bp.route('/create',methods = ('GET','POST'))
 @login_required
 def create():
+    #The create and update views should render and return a 200 OK status for a GET request. 
+    #When valid data is sent in a POST request, create should insert the new post data into the database, and update should modify the existing data. 
+    #Both pages should show an error message on invalid data.
+
     if request.method == 'POST':
 
         title = request.form['title']
@@ -62,6 +67,9 @@ def get_post(id,check_author=True):
 @bp.route('/<int:id>/update',methods = ('GET','POST'))
 @login_required
 def update(id):
+    #The create and update views should render and return a 200 OK status for a GET request. 
+    # When valid data is sent in a POST request, create should insert the new post data into the database, and update should modify the existing data. 
+    # Both pages should show an error message on invalid data.
     post = get_post(id)
 
     if request.method == 'POST':
@@ -88,6 +96,7 @@ def update(id):
 @bp.route('/<int:id>/delete', methods = ('POST',))
 @login_required
 def delete(id):
+    #The delete view should redirect to the index URL and the post should no longer exist in the database.
     get_post(id)
     db=get_db()
     db.execute('DELETE FROM post WHERE id = ?',(id,))
